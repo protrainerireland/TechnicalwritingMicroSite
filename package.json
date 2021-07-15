@@ -1,0 +1,25 @@
+{
+  "name": "MasterMicroSite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "eleventy",
+    "start:dev": "eleventy --watch --serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/protrainerireland/MasterMicroSite.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/protrainerireland/MasterMicroSite/issues"
+  },
+  "homepage": "https://github.com/protrainerireland/MasterMicroSite#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.12.1"
+  }
+}
