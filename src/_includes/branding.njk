@@ -1,0 +1,14 @@
+<style>
+:root {
+    --primary_color: {{ branding.primary_color }};
+    --secondary_color: {{ branding.secondary_color }};
+    --foreground_color: {{ branding.foreground_color }};
+    --secondary_foreground_color: {{ branding.secondary_foreground_color }};
+    --gradient_start: {{ branding.primary_color }};
+    --gradient_end: {{ branding.secondary_color }};
+}
+
+.change-color-in-svg {
+    fill: {{ branding.primary_color }};
+}
+</style>

@@ -1,0 +1,34 @@
+---
+layout: general_layout
+---
+
+<!-- {{ github.thecourses }} Github  -->
+<div id="course">
+
+  <hr class="my-2">
+  <h1>{{ course.name }}</h1>
+  <hr class="my-3">
+  
+  <strong>Course Description</strong>
+  <p>{{ course.descrip }}</p>
+  <hr class="my-2">
+
+  
+  <!-- debugging tip - pipe an object through the json filter to see what it is
+  {{ course | json}} -->
+
+  
+  <div class="ui course-paragraphs">
+  {% for paragraph in course.paragraphs %}
+    <h3>{{ paragraph.title }}</h3>
+    <p>{{ paragraph.text | convertLineBreaks | safe }}</p>
+  {% endfor %}
+</div>
+
+<div>
+<hr class="my-2">
+{% for searchword in course.searchWords.split(',') %}
+<button type="button" class="btn btn-light" href="courses/searchWords/{{ searchword }}">{{ searchword }}</button>
+{% endfor %}
+<hr class="my-2">
+</div>

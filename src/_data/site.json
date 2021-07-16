@@ -1,3 +1,37 @@
 {
-    "title": "Microsite Master Site!!!"
+    "organisation": {
+        "name": "JavaScriptTraining.ie"
+        
+
+    },
+    "url": "javascripttraining.ie",
+    "address": {
+        "line1": "Building 6500", 
+        "line2": "Cork Airport Business Park", 
+        "town": "Kinsale Road", 
+        "county": "Cork", 
+        "country": "Ireland", 
+        "postcode": "T12 TP8H"
+    }, 
+    "email": "info@professional.ie", 
+    "phone": "+353 21 4319010", 
+    "location": {
+        "lat": 51.852587, 
+        "lng": -8.484224, 
+        "google": "https://www.google.com/maps/place/Professional+Training+Solutions+Ltd/@51.852587,-8.484224,10z/data=!4m5!3m4!1s0x0:0x3c971fc02b3a40f3!8m2!3d51.852587!4d-8.484224?hl=en"
+    }, 
+    "footertext":[
+        "We do javascript training and are very good at it", 
+        "Full range of javascript courses available"
+    ], 
+    "designer": {
+        "name": "Professional Consulting Ltd.",
+        "link": "https://professional.ie/consulting_ireland/web%20development%20consultancy%20ireland.htm"
+    }, 
+    "social": {
+        "facebook": "#", 
+        "instagram": "#", 
+        "twitter": "#", 
+        "linkedin": "#"
+    }
 }

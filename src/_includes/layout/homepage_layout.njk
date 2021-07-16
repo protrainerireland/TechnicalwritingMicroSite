@@ -1,0 +1,9 @@
+---
+layout: base_layout
+---
+{% for section in home.sections %}
+
+{{ section | makeSection | safe }}
+
+{% endfor %}
+
