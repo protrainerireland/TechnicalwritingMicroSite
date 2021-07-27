@@ -15,11 +15,12 @@ module.exports = function(config) {
         return JSON.stringify(item);
     });
 
-    config.addPassthroughCopy({"src/img/*.*": "img"});
-    config.addPassthroughCopy({"src/img/testimonials/*.*": "img/testimonials"});
-    config.addPassthroughCopy({"src/css/*.*": "css"});
-    config.addPassthroughCopy({"src/js/*.*": "js"});
-    //config.addPassthroughCopy({"src/svg/*.*": "svg"});
+    config.addPassthroughCopy({"./src/img/*.*": "img"});
+    
+    config.addPassthroughCopy({"./src/img/testimonials/*.*": "img/testimonials"});
+    config.addPassthroughCopy({"./src/css/*.*": "css"});
+    config.addPassthroughCopy({"./src/js/*.*": "js"});
+    
 
     config.setTemplateFormats("html,njk,md,svg");
 
