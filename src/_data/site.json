@@ -12,7 +12,16 @@
         "county": "Cork", 
         "country": "Ireland", 
         "postcode": "T12 TP8H"
-    }, 
+    },
+    "addressDublin": {
+        "line1": "Unit 22", 
+        "line2": "Westland", 
+        "town": "Pearse Street", 
+        "county": "Dublin 2", 
+        "country": "Ireland", 
+        "postcode": "D02 W102"
+    },
+    
     "email": "info@professional.ie", 
     "phone": "+353 21 4319010", 
     "location": {
