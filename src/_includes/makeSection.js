@@ -21,16 +21,16 @@ module.exports = {
                             <p class="promo-title">${ section.title }</p>
                             <p class="join-title">${ section.subtitle }</p>
                             <a href="#" class="link-play">
-                                <amp-img src="svg/play.svg" alt="" class="play-btn">Watch Tutorials
+                                <img src="svg/play.svg" alt="" class="play-btn">Watch Tutorials
                             </a>
                             </div>
                             <div class="col-md-6">
-                                <amp-img src="${ section.image }" alt="" class="img-fluid">
+                                <img src="${ section.image }" alt="" class="img-fluid">
                             </div>
                         </div>
                         </div>
                         <!--- Background wave Hero ---->
-                        <amp-img src="${ section.background }" class="bottom-img" alt="">
+                        <img src="${ section.background }" class="bottom-img" alt="">
                     </section>`;
                 break;
             case "grid":
@@ -41,7 +41,7 @@ module.exports = {
                             `;
                 section.items.forEach(item=>{
                     html += `<div class="col-md-4 services">
-                                <amp-img src="${ item.image }" class="service-img"   alt="">
+                                <img src="${ item.image }" class="service-img"   alt="">
                                 <h4>${ item.title }</h4>
                                 <p>${ item.text }</p>
                             </div>`;
@@ -67,7 +67,7 @@ module.exports = {
                         ${list}
                         </div>
                         <div class="col-md-6">
-                            <amp-img src="${ section.content.image }" class="img-fluid" alt="">
+                            <img src="${ section.content.image }" class="img-fluid" alt="">
                         </div>
                     </div>
                     </div>
@@ -76,7 +76,7 @@ module.exports = {
             case 'quotes':
                 let quotes = section.content.quotes.map(quote => `<div class="col-md-5 testimonials">
                     <p class="feedback">"${quote.text}"</p>
-                    <amp-img src="${quote.image}"  alt="">
+                    <img src="${quote.image}"  alt="">
                     <p class="user-details"><b>${quote.name}</b><br>${ quote.jobtitle }</p>
                     </div>`).join("");
 
