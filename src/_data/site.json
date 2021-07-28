@@ -1,8 +1,8 @@
 {
-    "searchKeywords": ["JavaScript"],
+    "searchKeywords": ["java", "ejb", "spring"],
     "organisation": {
-        "name": "JavaScriptTraining.ie",
-        "keyword": "Javascript"
+        "name": "JavaTraining.ie",
+        "keyword": "Java"
 
     },
     "url": "javascripttraining.ie",
