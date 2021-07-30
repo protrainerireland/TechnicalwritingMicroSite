@@ -4,10 +4,6 @@ title: Courses
 tags: [main]
 ---
 
-
-<h1><b> JavaScript Training Courses </b></h1>
-
-
 <table class="table">
 <thead>
     <tr>
@@ -17,7 +13,7 @@ tags: [main]
 <tbody>
 </tbody>
 
-{% for course in courseapi.courses %}
+{% for course in coursesapifull.courses %}
 <tr>
 <td><a href="/courses/{{ course.name | slug }}/">{{ course.id }}</a></td>
 <td>{{ course.name }}</td>
