@@ -20,9 +20,6 @@ module.exports = {
                             <div class="col-md-6">
                             <p class="promo-title">${ section.title }</p>
                             <p class="join-title">${ section.subtitle }</p>
-                            <a href="#" class="link-play">
-                                <img src="svg/play.svg" alt="" class="play-btn">Watch Tutorials
-                            </a>
                             </div>
                             <div class="col-md-6">
                                 <img src="${ section.image }" alt="" class="img-fluid">
