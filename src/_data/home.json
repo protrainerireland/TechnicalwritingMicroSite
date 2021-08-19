@@ -58,7 +58,18 @@
                     "image": "/svg/Code Version Control.svg"
                 }
             ] 
-        }, 
+        },
+        {
+            "id": "keywordtext",
+            "link": "/#text", 
+            "text": "Info", 
+            "title": "Info", 
+            "type": "keywordtext",
+            "content":{
+                "title": "hello", 
+                "keyword": "jav"
+            }
+        },
         {
             "id": "about",
             "link": "/#about", 

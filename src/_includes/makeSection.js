@@ -1,5 +1,13 @@
+const fs = require('fs');
+
 module.exports = {
+
+
     makeSection: function(section) {
+
+        let rawData = fs.readFileSync(`${__dirname}/../_data/site.json`);
+        let site = JSON.parse(rawData);
+
 
         let html;
 
@@ -49,6 +57,26 @@ module.exports = {
                         </div>
                     </section>`;
                 break;
+            case "keywordtext":
+
+
+                let defaultTemplate = `<div>${site.searchKeywords.join(" ")}</div>`;
+                
+                
+                html = `<section id="${section.id}" class="section">
+                    <div class="container">
+                    <h3 class="title text-center">${ section.title }</h3>
+                    <div class="row">
+                        <div class="col-md-6 about">
+                        <p class="about-title">${ section.content.title }</p>
+                        <p>${ defaultTemplate } is one of the most popular coding languages in the world. The job market for ${ defaultTemplate } developers is robust and consistent, making it a great programming language to learn. Our courses can give you the skills you need to work effectively with ${ defaultTemplate }.  Why attend one of our ${ defaultTemplate } courses? If you’re interested working effectively with ${ defaultTemplate } to benefit your organisation and to get an edge over your competitors, or simply to learn a highly lucrative skill then you should consider our ${ defaultTemplate } Programming training course.</p>
+                        </div>
+                    </div>
+                    </div>
+                </section>`;
+                break;
+
+
             case "listwithimage":
                 //let list = "<ul>";
                 //section.content.list.map(item=>list += `<li>${item}</li>`);
