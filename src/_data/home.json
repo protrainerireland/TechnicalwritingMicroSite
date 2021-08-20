@@ -65,6 +65,8 @@
             "text": "Info", 
             "title": "Info", 
             "type": "keywordtext",
+            "image": "/svg/Code Version Control.svg", 
+            "imagePosition": "right",
             "content":{
                 "title": "hello", 
                 "keyword": "jav"
