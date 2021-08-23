@@ -1,9 +1,7 @@
 {
     "searchKeywords": ["java"],
     "organisation": {
-        "name": "JavaTraining.ie",
-        "keyword": "Java"
-
+        "name": "JavaTraining.ie"
     },
     "url": "javascripttraining.ie",
     "logo": "/img/javascriptlogo.png",
