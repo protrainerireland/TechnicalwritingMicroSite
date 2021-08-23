@@ -7,9 +7,6 @@ const fs = require('fs');
 //const site = JSON.parse(json);
 
 module.exports = async function() {
-  console.log( "***Fetching courses" );
-
-  console.log(__dirname);
 
   let rawData = fs.readFileSync(`${__dirname}/site.json`);
   let site = JSON.parse(rawData);
@@ -24,9 +21,8 @@ module.exports = async function() {
   });
 
 
-  console.log(json);
-
-  // map the results from the courses full api 
+    // map the results from the courses full api 
+    // need to remove duplicates
 
   let courseList = [];
 
