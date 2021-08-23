@@ -1,9 +1,7 @@
 {
     "searchKeywords": ["java", "ejb", "spring"],
     "organisation": {
-        "name": "JavaTraining.ie",
-        "keyword": "Java"
-
+        "name": "JavaTraining.ie"
     },
     "url": "javascripttraining.ie",
     "logo": "/img/javascriptlogo.png",
