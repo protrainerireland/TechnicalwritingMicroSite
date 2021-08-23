@@ -24,17 +24,54 @@ module.exports = async function() {
     // map the results from the courses full api 
     // need to remove duplicates
 
-  let courseList = [];
+  // the courses api returns an array
 
-  for (let i=0; i<json.length; i++) {
+  let data = [
+    {
+      keyword:"java",
+      title: "Java", 
+      landingpagetext: "", 
+      paragraphs: [], 
+      courses:[
+        {
+          name: "Java Course 1", 
+          id: 5001
+        }, 
+        {
+          name: "Java Course 2", 
+          id: 5002
+        }
+      
+      ]
+    }, 
+    {
+      keyword:"ejb", 
+      title:"Ejb", 
+      paragraphs: [], 
+      courses:[
+        {
+          name: "EJB Course 1", 
+          id: 6001
+        }, 
+        {
+          name: "Java Course 1", 
+          id: 5001
+        }, 
+        {
+          name: "EJB Course 2", 
+          id: 6002
+        }
+      ]
+    }
+  ];
 
-    json[i].courses.forEach(course=>courseList.push(course));
-  }
 
+  distinctCourseList = json.flatMap(keyword => keyword.courses)
+                           .filter((course, index, courses) => courses.findIndex(c=>c.id==course.id) == index);
 
   
   return {
-    courses: courseList
+    courses: distinctCourseList
   };
 
   // GitHub API: https://developer.github.com/v3/repos/#get
