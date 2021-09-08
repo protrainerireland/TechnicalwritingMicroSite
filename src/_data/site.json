@@ -1,5 +1,5 @@
 {
-    "searchKeywords": ["java", "ejb", "spring"],
+    "searchKeywords": ["ejb"],
     "organisation": {
         "name": "JavaTraining.ie"
     },
@@ -52,5 +52,9 @@
         "instagram": "#", 
         "twitter": "#", 
         "linkedin": "#"
+    }, 
+    "animation": {
+        "delay": 300, 
+        "defaultOffset": 350
     }
 }
