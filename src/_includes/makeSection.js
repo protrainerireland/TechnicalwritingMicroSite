@@ -199,6 +199,42 @@ module.exports = {
                         </section>`;
                 break;
 
+            case 'pricing':
+
+                let prices = section.content.prices.map((price, index) => {
+
+                    return `<div class="card mb-4 box-shadow">
+                                <div class="card-header">
+                                    <h4 class="my-0 font-weight-normal">${price.title}</h4>
+                                </div>
+                                <div class="card-body">
+                                    <h1 class="card-title">
+                                        ${ price.cost}
+                                        <small class="text-muted">${price.costPeriod}</small>
+                                    </h1>
+                                    <ul class="list-unstyled mt-3 mb-4">
+                                        ${ price.lines.map(line=>`<li>${line}</li>`) }
+                                    </ul>
+                                    <a class="btn btn-primary" href="${price.ctaAction}">${price.ctaText}</a>
+                                </div>
+
+                            </div>`;
+                });
+
+//                let prices = "prices";
+
+                html = `<section id="${ section.id}">
+                            <div class="container">
+                                <h3 class="title text-center">${section.text}</h3>
+
+                                <div class="card-deck mb-3 text-center">
+
+                                    ${ prices }
+
+                                </div>
+                            </div>
+                        </section>`;
+                break;
             default: 
                 html = `<section id="${section.id}" class="section"><code>${JSON.stringify(section)}</code></section>`;
                 break;
