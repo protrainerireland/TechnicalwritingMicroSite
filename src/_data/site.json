@@ -6,7 +6,7 @@
     "url": "javascripttraining.ie",
     "logo": "/img/javascriptlogo.png",
     "address": {
-        "line1": "Building 6500", 
+        "line1": "Commas Building 6500E", 
         "line2": "Cork Airport Business Park", 
         "town": "Kinsale Road", 
         "county": "Cork", 
@@ -14,7 +14,7 @@
         "postcode": "T12 TP8H"
     },
     "addressDublin": {
-        "line1": "Unit 22", 
+        "line1": "Unit 22/23", 
         "line2": "Westland", 
         "town": "Pearse Street", 
         "county": "Dublin 2", 
