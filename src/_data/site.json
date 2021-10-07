@@ -1,9 +1,11 @@
 {
-    "searchKeywords": ["ejb"],
+    "searchKeywords": ["Angular"],
+    "searchLocations": ["Dublin", "Cork", "Limerick", "Ireland"],
+    "homepageTitle": "Training Courses - Dublin Cork Limerick Ireland", 
     "organisation": {
-        "name": "JavaTraining.ie"
+        "name": "AngularTraining.ie"
     },
-    "url": "javascripttraining.ie",
+    "url": "angulartraining.ie",
     "logo": "/img/javascriptlogo.png",
     "address": {
         "line1": "Building 6500E", 
