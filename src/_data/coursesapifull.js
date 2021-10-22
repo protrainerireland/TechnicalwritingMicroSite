@@ -30,7 +30,7 @@ module.exports = async function() {
                           .filter((mskeyword)=>mskeyword != "");
 
 
-
+  console.log(distinctMicrositeKeywordList);
 
   
   url = `http://professional.ie/api/getLandingPageTextForKeywords.php?keywords[]=${distinctMicrositeKeywordList.join("&keywords[]=")}`;
@@ -52,17 +52,19 @@ module.exports = async function() {
 
 
     //let savedSearches = site.searchLocations.flatMap(location=> msKeywordData.map(keyword => {
-    let savedSearches = msKeywordData.flatMap(keyword=> site.searchLocations.map(location => {
+    let savedSearches = msKeywordData.flatMap(keyword=> {
+      return site.searchLocations.map(location => {
 
-    return {
-      keyword: `${keyword.keyword} Training`, 
-      location, 
-      title: `${keyword.keyword} Training Courses ${location}`, 
-      courses: keyword.courses, 
-      paragraphs: keyword.paragraphs
-    }
-
-  }));
+        return {
+          keyword: `${keyword.keyword} Training`, 
+          location, 
+          title: `${keyword.keyword} Training Courses ${location}`, 
+          courses: keyword.courses, 
+          paragraphs: keyword.paragraphs
+        }
+      });
+    
+  });
 
   /*
   console.log(savedSearches.flatMap(entry => {

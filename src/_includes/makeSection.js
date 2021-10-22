@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { stringify } = require('querystring');
 
 module.exports = {
 
@@ -28,6 +29,7 @@ module.exports = {
         str = str.replace(/\s+/g, '-') // collapse whitespace and replace by -
             .replace(/-+/g, '-'); // collapse dashes
     
+        //console.log(`slugged:${str}`);
         return str;
     },
 

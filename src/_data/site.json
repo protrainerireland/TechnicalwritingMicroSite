@@ -1,9 +1,9 @@
 {
-    "searchKeywords": ["Angular"],
+    "searchKeywords": ["JavaScript"],
     "searchLocations": ["Dublin", "Cork", "Limerick", "Ireland"],
     "homepageTitle": "Training Courses - Dublin Cork Limerick Ireland", 
     "organisation": {
-        "name": "AngularTraining.ie"
+        "name": "AngularTraining.ie" 
     },
     "url": "angulartraining.ie",
     "logo": "/img/javascriptlogo.png",

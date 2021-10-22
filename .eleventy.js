@@ -41,12 +41,12 @@ module.exports = function(config) {
         }, {});
 
         //console.log(topics);
-        console.log(Object.keys(topics));
+        //console.log(Object.keys(topics));
 
         let cards = Object.keys(topics).map((topicName, index) => {
-            console.log(topicName);
+            //console.log(topicName);
             let topic = topics[topicName];
-            console.log(topic);
+            //console.log(topic);
 
             let courses = topic.map(course=>{
                 return `<div><a href="/saved_searches/${course.location}/${slugify(course.keyword)}/${slugify(course.title)}.html">${course.title}</a></div>`;
