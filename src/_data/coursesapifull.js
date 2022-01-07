@@ -26,6 +26,7 @@ module.exports = async function() {
                            .filter((course, index, courses) => courses.findIndex(c=>c.id==course.id) == index);
 
   distinctMicrositeKeywordList = json.flatMap(keyword=> keyword.microsite_keywords)
+                          .map(mskeyword=>mskeyword.toLowerCase())        // convert all keywords to lower case (db has mixture for some)
                           .filter((mskeyword, index, list) => list.indexOf(mskeyword) == index)
                           .filter((mskeyword)=>mskeyword != "");
 
