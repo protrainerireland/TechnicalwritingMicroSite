@@ -26,9 +26,20 @@ module.exports = async function() {
                            .filter((course, index, courses) => courses.findIndex(c=>c.id==course.id) == index);
 
   distinctMicrositeKeywordList = json.flatMap(keyword=> keyword.microsite_keywords)
-                          .map(mskeyword=>mskeyword.toLowerCase())        // convert all keywords to lower case (db has mixture for some)
                           .filter((mskeyword, index, list) => list.indexOf(mskeyword) == index)
                           .filter((mskeyword)=>mskeyword != "");
+
+  distinctMicrositeKeywordList = distinctMicrositeKeywordList.reduce((result, item) => {
+      // do a case-insensitive compare to 
+      // see if item is alreay in the result array
+      if (result.findIndex(resultItem => {
+          return resultItem.toLowerCase() == item.toLowerCase();
+      }) == -1) {
+          result.push(item);
+      }
+      return result;
+  }, []);
+
 
 
   console.log(distinctMicrositeKeywordList);
