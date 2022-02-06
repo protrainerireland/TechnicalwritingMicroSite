@@ -10,111 +10,55 @@
             "id": "banner", 
             "link": "no", 
             "type": "banner", 
-            "title": "JavaScript Training Courses Ireland", 
-            "subtitle": "Contact Us for all your JavaScript training requirements", 
+            "title": "Technical Writing Training Courses Ireland", 
+            "subtitle": "Contact us for all your Technical Writing training requirements", 
             "background": "img/ground@-min.png",
             "image": "svg/onlineclass.svg"
-        }, 
-        {
-            "id": "services", 
-            "link": "/#services", 
-            "text": "Services", 
-            "title": "Services", 
-            "type": "grid", 
-            "items":[
-                {
-                    "title": "Landing Page Development", 
-                    "text": "lorem ipsum", 
-                    "image": "/svg/Design collaboration.svg", 
-                    "link": "" 
-                }, 
-                {
-                    "title": "Online Branding", 
-                    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", 
-                    "image": "/svg/branding.svg", 
-                    "link": ""
-                }, 
-                {
-                    "title": "Google Ads", 
-                    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", 
-                    "image": "/svg/ads.svg", 
-                    "link": ""
-                }, 
-                {
-                    "title": "PPC", 
-                    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                    "image": "/svg/undraw_Savings_dwkw.svg", 
-                    "link": ""
-                }, 
-                {
-                    "title": "Social Media",
-                    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", 
-                    "image": "/svg/Social dilemma.svg", 
-                    "link": ""
-                }, 
-                {
-                    "title": "SEO", 
-                    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", 
-                    "image": "/svg/Code Version Control.svg"
-                }
-            ], 
-            "animation": {
-                "offset": 200
-            }
-            
         },
         {
             "id": "keywordtext",
             "link": "/#keywordtext", 
-            "text": "Info", 
-            "title": "Info", 
+            "text": "About", 
+            "title": "About", 
             "type": "keywordtext",
             "image": "/svg/Code Version Control.svg", 
             "imagePosition": "right",
             "content":{
-                "title": "hello"
+                "title": "Write quickly, accurately and clearly...",
+                "text": "Great technical writing will help any reader understand quickly and clearly; poor technical writing delays, confuses and may generate conflict. Our training offers the insights and techniques necessary to write quickly, accurately and clearly. It provides a systematic approach to planning, writing and editing instructional guides, incident reports, SOPs and even simple E-mails. Our expert trainers will help you deliver quality documentation on time and in a professional manner."
             }
         },
         {
             "id": "about",
             "link": "/#about", 
-            "text": "About", 
-            "title": "About", 
+            "text": "Applied Technical Writing", 
+            "title": "Applied Technical Writing", 
             "type": "listwithimage", 
             "content":{
-                "title": "Odio sed id eos et laboriosam consequatur eos earum soluta.", 
+                "title": "Writing skills and improved document design...",
+                "text1": "We provide in-company workshops designed to deliver specific predefined benefits in terms of participants writing skills and improved document design.", 
+                "text2": "Prior to making a definitive work proposal and designing the workshop we will carry out a preliminary needs analysis to:",
                 "list":[
-                    "Sint aliquam consequatur ex ex labore.", 
-                    "Duis aute irure dolor in reprehenderit in voluptate velit.", 
-                    "Aspernatur consectetur omnis numquam quaerat.", 
-                    "Et vel ut quidem alias veritatis repudiandae ut fugit.", 
-                    "Fugit ut maxime incidunt accusantium totam repellendus eum error.", 
-                    "Ullamco laboris nisi ut aliquip ex ea commodo consequat."
+                    "Lock in the specific reports/tasks that constitute the focus of the training.", 
+                    "Fine-tune the emphasis and incorporate client specific terminology into Professional Training's proprietary materials for the skills development segment of the workshop .", 
+                    "Define skills building exercises and briefings which replicate situations that are realistic, relevant and useful to client and the participants at the workshop.", 
+                    "Agree evaluation methods for the workshop."   
                 ], 
                 "image": "svg/undraw_mobile_marketing.svg"
             }
-        }, 
+        },
         {
-            "id": "testimonials", 
-            "link": "/#testimonials", 
-            "text": "Testimonials", 
-            "type": "quotes", 
-            "content": {
-                "title": "Testimonials", 
-                "quotes":[
-                    {
-                        "name": "Carol", 
-                        "jobtitle": "CEO at DIN", 
-                        "image": "/img/testimonials/carol.png", 
-                        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna"
-                    }, 
-                    {
-                        "name": "Fred", 
-                        "jobtitle": "Co-founder at ArtSpace", 
-                        "image": "/img/testimonials/fred.JPEG", 
-                        "text": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-                    }
-                ]
+            "id": "summary",
+            "link": "/#summary", 
+            "text": "Why Attend?", 
+            "title": "Why Attend?", 
+            "type": "summary",
+            "image": "", 
+            "imagePosition": "right",
+            "content":{
+                "title": "Why attend one of our Technical Writing courses?",
+                "text1": "We work best with participants who are committed to delivering reports, manuals and routine communications that address the needs of the situation and their target audience effectively and efficiently. <a href=/courses>Our workshops</a> are highly participative and constantly seek to anchor the skills and knowledge in the participants work situation.",
+                "text2": "People learn best by “doing” and the content will combine generic learning inputs with “smart practice” using predefined exercises and referencing documents and situations specific to the client organisation where possible."
             }
         }
     ] 
