@@ -193,7 +193,7 @@ module.exports = {
 
                 } catch(error) {
                     list = `<ul></ul>`;
-                    console.log(`*** metadata error section.content.list is missing`);  
+                    console.log(`***** metadata error section.content.list is missing - keywordtext *****`);  
 
                 }
 
@@ -239,7 +239,7 @@ module.exports = {
                     list = `<ul>${section.content.list.map(item=>`<li>${item}</li>`).join("")}</ul>`;
                 } catch(error) {
                     list = `<ul></ul>`;
-                    console.log(`*** metadata error section.content.list is missing`);
+                    console.log(`***** metadata error section.content.list is missing - animatedtwocolumns *****`);
                     
                 }
 
@@ -304,7 +304,7 @@ module.exports = {
                 list = `<ul>${section.content.list.map(item=>`<li>${item}</li>`).join("")}</ul>`;
                 } catch(error) {
                     list = `<ul></ul>`;
-                    console.log(`*** metadata error section.content.list is missing`);
+                    console.log(`***** metadata error section.content.list is missing - listwithimage *****`);
                 }
 
                 html = `<section id="${section.id}" class="section">
@@ -341,7 +341,12 @@ module.exports = {
 
                 case "summary":
 
-                    list = `<ul>${section.content.list.map(item=>`<li>${item}</li>`).join("")}</ul>`;
+                    try {
+                        list = `<ul>${section.content.list.map(item=>`<li>${item}</li>`).join("")}</ul>`;
+                    } catch(error) {
+                        list = `<ul></ul>`;
+                        console.log(`***** metadata error section.content.list is missing - summary *****`);
+                    }
                     
                     html = `<section id="${section.id}" class="section">
                         <div class="container">
