@@ -29,11 +29,13 @@
             }
         },
         {
-            "id": "about",
-            "link": "/#about", 
-            "text": "About", 
-            "title": "About", 
-            "type": "listwithimage", 
+            "id": "summary",
+            "link": "/#summary", 
+            "text": "What to Expect", 
+            "title": "What to Expect", 
+            "type": "summary",
+            "image": "", 
+            "imagePosition": "right",
             "content":{
                 "title": "Writing skills and improved document design...",
                 "text1": "We provide in-company workshops designed to deliver specific predefined benefits in terms of participants writing skills and improved document design.", 
@@ -60,6 +62,6 @@
                 "text1": "We work best with participants who are committed to delivering reports, manuals and routine communications that address the needs of the situation and their target audience effectively and efficiently. <a href=/courses>Our workshops</a> are highly participative and constantly seek to anchor the skills and knowledge in the participants work situation.",
                 "text2": "People learn best by “doing” and the content will combine generic learning inputs with “smart practice” using predefined exercises and referencing documents and situations specific to the client organisation where possible."
             }
-        }
+        } 
     ] 
 }
