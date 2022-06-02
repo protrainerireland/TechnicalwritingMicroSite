@@ -198,7 +198,7 @@ module.exports = {
                 }
 
                 //let defaultTemplate = `<div>${site.searchKeywords.join(" ")}</div>`;
-                let defaultTemplate = `${site.searchKeywords[0]} is one of the most popular coding languages in the world. The job market for ${ site.searchKeywords[0] } developers is robust and consistent, making it a great programming language to learn. Our courses can give you the skills you need to work effectively with ${ site.searchKeywords[0] }.  Why attend one of our ${ site.searchKeywords[0] } courses? If you're interested working effectively with ${ site.searchKeywords[0] } to benefit your organisation and to get an edge over your competitors, or simply to learn a highly lucrative skill then you should consider our ${ site.searchKeywords[0] } training course.</p>`
+                //let defaultTemplate = `${site.searchKeywords[0]} is one of the most popular coding languages in the world. The job market for ${ site.searchKeywords[0] } developers is robust and consistent, making it a great programming language to learn. Our courses can give you the skills you need to work effectively with ${ site.searchKeywords[0] }.  Why attend one of our ${ site.searchKeywords[0] } courses? If you're interested working effectively with ${ site.searchKeywords[0] } to benefit your organisation and to get an edge over your competitors, or simply to learn a highly lucrative skill then you should consider our ${ site.searchKeywords[0] } training course.</p>`
                 
                 if (section.image) {
                     //..tbd
@@ -216,8 +216,7 @@ module.exports = {
                         data-aos-anchor="#${section.id}"
                         >
                         <p class="about-title">${ section.content.title }</p>
-                        <p>${ section.content.text1 }</p>
-                        <p>${ section.content.text2 }</p>
+                        <p>${ section.content.text }</p>
                         ${list}
                         </div>`;
                     if (section.image) {

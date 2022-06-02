@@ -29,11 +29,11 @@
             }
         },
         {
-            "id": "summary",
-            "link": "/#summary", 
+            "id": "about",
+            "link": "/#about", 
             "text": "What to Expect", 
             "title": "What to Expect", 
-            "type": "summary",
+            "type": "listwithimage",
             "image": "", 
             "imagePosition": "right",
             "content":{
