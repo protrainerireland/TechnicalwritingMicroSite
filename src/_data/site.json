@@ -3,9 +3,9 @@
     "searchLocations": ["Dublin", "Cork", "Limerick", "Ireland"],
     "homepageTitle": "Training Courses - Dublin Cork Limerick Ireland", 
     "organisation": {
-        "name": "AngularTraining.ie" 
+        "name": "TechnicalWritingTraining.ie" 
     },
-    "url": "angulartraining.ie",
+    "url": "technicalwritingtraining.ie",
     "logo": "",
     "address": {
         "line1": "Building 6500E", 

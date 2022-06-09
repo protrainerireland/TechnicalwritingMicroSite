@@ -31,8 +31,8 @@
         {
             "id": "about",
             "link": "/#about", 
-            "text": "What to Expect", 
-            "title": "What to Expect", 
+            "text": "About", 
+            "title": "About", 
             "type": "listwithimage",
             "image": "", 
             "imagePosition": "right",
@@ -46,7 +46,7 @@
                     "Define skills building exercises and briefings which replicate situations that are realistic, relevant and useful to client and the participants at the workshop.", 
                     "Agree evaluation methods for the workshop."   
                 ], 
-                "image": "svg/undraw_mobile_marketing.svg"
+                "image": "svg/Design collaboration.svg"
             }
         },
         {
