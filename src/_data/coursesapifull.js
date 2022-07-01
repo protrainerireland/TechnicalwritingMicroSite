@@ -56,16 +56,20 @@ module.exports = async function() {
 
   let msKeywordData = json.map(keyword=> {
    
-
+  
 
     return {
       keyword: keyword.keyword, 
       paragraphs: keyword.paragraphs, 
       courses: distinctCourseList.filter(course=>course.searchWords.includes(keyword.keyword))
     }
+
+ 
   });
 
-  //test
+
+
+  
   
   let index = msKeywordData.findIndex(keyword => keyword.keyword == site.searchKeywords);
 
