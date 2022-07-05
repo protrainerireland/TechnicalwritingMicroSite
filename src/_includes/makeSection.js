@@ -27,7 +27,6 @@ function slugify (str, replaceFullStops) {
     str = str.replace(/\s+/g, '-') // collapse whitespace and replace by -
         .replace(/-+/g, '-'); // collapse dashes
 
-    //console.log(`slugged:${str}`);
     return str;
 
 }
@@ -53,14 +52,9 @@ module.exports = {
             return result;
         }, {});
 
-        //console.log("******************************");
-        //console.log(topics);
-        //console.log("******************************");
-
         let cards = Object.keys(topics).map((topicName, index) => {
-            //console.log(topicName);
+           
             let topic = topics[topicName];
-            //console.log(topic);
 
             let courses = topic.map(course=>{
                 return `<div><a href="/saved_searches/${slugify(course.location)}/${slugify(course.keyword)}/${slugify(course.title)}.html">${course.title}</a></div>`;
@@ -81,15 +75,12 @@ module.exports = {
                             </div>
                         </div>`;
             return card;
-
             
         });
         let accordion = `<div class="accordion" id="savedSearchAccordion">    
                 ${cards.join("")}
         </div>`;
 
-        
-    
         html = `<section id="savedsearches" class="section">
                     <div class="container">
                         <div class="col">
@@ -122,45 +113,7 @@ module.exports = {
                             <p>${section.content}</p>
                         </section>`;
                 break;
-            case 'placeholder':
-                html = ``;
-                break;
-
-            case "embeddedsvg":
-                html = `<section id="${section.id}" class="section">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col center-block text-center">
-                                        <h1>${section.title}</h1>
-                                        <img src="${section.content.image}">
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-                `;
-                break;
-
-            case "inlinesvg": 
-
-                // open the svg file and put it inline into the html
-                let svg = fs.readFileSync(path.resolve(__dirname, `../../build/${section.content.image}`));
-
-                console.log(svg);
-
-                html = `<section id="${section.id}" class="section">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col center-block text-center">
-                                        <h1>${section.title}</h1>
-                                        <!--<img src="${section.content.image}">-->
-                                        ${svg}
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-                `;
-                break;
-
+            
             case 'banner':
 
                 html = `<section class="section banner">
@@ -179,26 +132,6 @@ module.exports = {
                         <img src="${ section.background }" class="bottom-img" alt="">
                     </section>`;
                 break;
-
-            case "grid":
-                html = `<section id="${section.id}" class="section">
-                            <div class="container text-center">
-                            <h3 class="title text-center">${ section.title }</h3>
-                            <div class="row text-center">
-                            `;
-                section.items.forEach((item, index) => {
-                    html += `<div class="col-md-4 services" data-aos="flip-left" data-aos-delay="${ site.animation.delay * (index + 1) }" ${ animationOffset }>
-                                <img src="${ item.image }" class="service-img"   alt="">
-                                <h4>${ item.title }</h4>
-                                <p>${ item.text }</p>
-                            </div>`;
-
-                });
-
-                html += `</div>
-                        </div>
-                    </section>`;
-                break; bv
 
             case "keywordtext":
 
@@ -252,26 +185,49 @@ module.exports = {
                 </section>`;
                 break;
 
-            case "listwithimage":
+            case "summary":
+
                 try {
-                list = `<ul>${section.content.list.map(item=>`<li>${item}</li>`).join("")}</ul>`;
+                    list = `<ul>${section.content.list.map(item=>`<li>${item}</li>`).join("")}</ul>`;
                 } catch(error) {
                     list = `<ul></ul>`;
-                    console.log(`***** metadata error section.content.list is missing - listwithimage *****`);
+                    console.log(`***** metadata error section.content.list is missing - summary *****`);
                 }
 
+                try {
+                    text = `<ul>${section.content.text.map(item=>`<p>${item}</p>`).join("")}</ul>`;
+
+                } catch(error) {
+                    text = `<ul></ul>`;
+                    console.log(`***** metadata error section.content.list is missing - keywordtext *****`);  
+
+                }
+                
                 html = `<section id="${section.id}" class="section">
                     <div class="container">
                     <h3 class="title text-center">${ section.title }</h3>
-                    <div class="row">
-                        <div class="col-md-6 about" data-aos="fade-right" ${animationDelay} ${animationOffset}>
+                    <div class="row ${section.imagePosition=="left" ? "flex-row-reverse" :""}">
+                        <div class="${section.image ? 'col-md-6' : 'col-md-12'} about"
+                        data-aos="fade-left" ${ animationDelay } ${animationOffset}
+                        data-aos-anchor="#${section.id}"
+                        >
                         <p class="about-title">${ section.content.title }</p>
+                        
+                        ${text}
+                        
                         ${list}
-                        </div>
-                        <div class="col-md-6" data-aos="fade-left" ${animationDelay} ${animationOffset}>
-                            <img src="${ section.content.image }" class="img-fluid" alt="">
-                        </div>
-                    </div>
+                        
+                        </div>`;
+                    if (section.image) {
+                        html += `<div class="col-md-6"
+                                data-aos="fade-right" ${ animationDelay }  ${animationOffset}
+                                data-aos-anchor="#${section.id}"
+                        >
+                                    <img src="${ section.image }" class="img-fluid" alt="">
+                                </div>`;
+                    }    
+    
+                html += `</div>
                     </div>
                 </section>`;
                 break;
@@ -293,89 +249,6 @@ module.exports = {
                         </section>`;
                 break;
 
-                case "summary":
-
-                    try {
-                        list = `<ul>${section.content.list.map(item=>`<li>${item}</li>`).join("")}</ul>`;
-                    } catch(error) {
-                        list = `<ul></ul>`;
-                        console.log(`***** metadata error section.content.list is missing - summary *****`);
-                    }
-
-                    try {
-                        text = `<ul>${section.content.text.map(item=>`<p>${item}</p>`).join("")}</ul>`;
-    
-                    } catch(error) {
-                        text = `<ul></ul>`;
-                        console.log(`***** metadata error section.content.list is missing - keywordtext *****`);  
-    
-                    }
-                    
-                    html = `<section id="${section.id}" class="section">
-                        <div class="container">
-                        <h3 class="title text-center">${ section.title }</h3>
-                        <div class="row ${section.imagePosition=="left" ? "flex-row-reverse" :""}">
-                            <div class="${section.image ? 'col-md-6' : 'col-md-12'} about"
-                            data-aos="fade-left" ${ animationDelay } ${animationOffset}
-                            data-aos-anchor="#${section.id}"
-                            >
-                            <p class="about-title">${ section.content.title }</p>
-                            
-                            ${text}
-                            
-                            ${list}
-                            
-                            </div>`;
-                        if (section.image) {
-                            html += `<div class="col-md-6"
-                                    data-aos="fade-right" ${ animationDelay }  ${animationOffset}
-                                    data-aos-anchor="#${section.id}"
-                            >
-                                        <img src="${ section.image }" class="img-fluid" alt="">
-                                    </div>`;
-                        }    
-        
-                    html += `</div>
-                        </div>
-                    </section>`;
-                    break;
-
-            case 'pricing':
-
-                let prices = section.content.prices.map((price, index) => {
-
-                    return `<div class="card mb-4 box-shadow">
-                                <div class="card-header">
-                                    <h4 class="my-0 font-weight-normal">${price.title}</h4>
-                                </div>
-                                <div class="card-body">
-                                    <h1 class="card-title">
-                                        ${ price.cost}
-                                        <small class="text-muted">${price.costPeriod}</small>
-                                    </h1>
-                                    <ul class="list-unstyled mt-3 mb-4">
-                                        ${ price.lines.map(line=>`<li>${line}</li>`) }
-                                    </ul>
-                                    <a class="btn btn-primary" href="${price.ctaAction}">${price.ctaText}</a>
-                                </div>
-
-                            </div>`;
-                });
-
-//                let prices = "prices";
-
-                html = `<section id="${ section.id}">
-                            <div class="container">
-                                <h3 class="title text-center">${section.text}</h3>
-
-                                <div class="card-deck mb-3 text-center">
-
-                                    ${ prices }
-
-                                </div>
-                            </div>
-                        </section>`;
-                break;
             default: 
                 html = `<section id="${section.id}" class="section"><code>${JSON.stringify(section)}</code></section>`;
                 break;
