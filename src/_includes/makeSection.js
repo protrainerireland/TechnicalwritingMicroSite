@@ -114,6 +114,10 @@ module.exports = {
                         </section>`;
                 break;
             
+            case 'placeholder':
+                html = ``;
+                break;
+
             case 'banner':
 
                 html = `<section class="section banner">
