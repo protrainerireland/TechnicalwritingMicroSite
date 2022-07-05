@@ -25,8 +25,10 @@
             "imagePosition": "right",
             "content":{
                 "title": "Writing concisely and clearly takes time...",
-                "text1": "Writing concisely and clearly takes time. You have to work out exactly what your audience wants to know in order to make sure you are writing relevant information.  There is no set formula for writing a report – every report is different. Each one depends on what the purpose is, who you are writing for and the kind of information that you are reporting.",
-                "text2": "The keys to writing good reports are:",
+                "text":[
+                    "Writing concisely and clearly takes time. You have to work out exactly what your audience wants to know in order to make sure you are writing relevant information.  There is no set formula for writing a report – every report is different. Each one depends on what the purpose is, who you are writing for and the kind of information that you are reporting.",
+                    "The keys to writing good reports are:"  
+                ],
                 "list":[
                     "Understanding the types of writing a report involves.", 
                     "Being able to identify the audience and purpose of your report.", 
@@ -48,9 +50,10 @@
             "imagePosition": "right",
             "content":{
                 "title": "What to expect from one of our Facilitation Skills courses?",
-                "text1": "<a href=/courses>Our programmes</a> are designed for people who regularly write reports as part of their job. It will help to refresh their existing skills and introduce some new techniques and concepts. The value of the session is enhanced if the participants bring some sample documents.  Participants should be familiar with the basics of report writing and have created a number of reports.  Our courses are also suitable for more experienced report writers who may be self-taught, never having received any formal training.",
-
-                "text2": "Having completed our training the participants will:",
+                "text":[
+                    "<a href=/courses>Our programmes</a> are designed for people who regularly write reports as part of their job. It will help to refresh their existing skills and introduce some new techniques and concepts. The value of the session is enhanced if the participants bring some sample documents.  Participants should be familiar with the basics of report writing and have created a number of reports.  Our courses are also suitable for more experienced report writers who may be self-taught, never having received any formal training.",
+                    "Having completed our training the participants will:"
+                ],
                 "list":[
                     "Understand that professional writing is a career skill.", 
                     "Understand the importance of knowing their audience.", 
