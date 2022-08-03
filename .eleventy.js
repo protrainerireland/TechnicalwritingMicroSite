@@ -28,6 +28,14 @@ module.exports = function(config) {
     config.addFilter("slugify", slugify);
     
     config.addFilter("asAccordion", asAccordion);
+
+    // this filter will join the values in an array together
+    // needed to put keywords into title in schedule
+    // call using {{ site.searchKeywords | join }} from a markdown file
+    // you can specify the join character {{ site.searchKeywords | join:"+" }}
+    config.addFilter("join", function(arr, joinChar=" ") {
+        return arr.join(joinChar);
+    });
     
     config.addPassthroughCopy({"./src/img/*.*": "img"});
     
