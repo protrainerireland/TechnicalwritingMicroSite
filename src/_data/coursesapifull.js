@@ -21,11 +21,14 @@ module.exports = async function() {
     type: "json"
   });
 
+  let schedule = json.flatMap(keyword => keyword.schedule);
 
-  distinctCourseList = json.flatMap(keyword => keyword.courses)
+  //console.log(schedule);
+
+  let distinctCourseList = json.flatMap(keyword => keyword.courses)
                            .filter((course, index, courses) => courses.findIndex(c=>c.id==course.id) == index);
 
-  distinctMicrositeKeywordList = json.flatMap(keyword=> keyword.microsite_keywords)
+  let distinctMicrositeKeywordList = json.flatMap(keyword=> keyword.microsite_keywords)
                           .filter((mskeyword, index, list) => list.indexOf(mskeyword) == index)
                           .filter((mskeyword)=>mskeyword != "");
 
@@ -43,6 +46,10 @@ module.exports = async function() {
 
 
   console.log(distinctMicrositeKeywordList);
+
+
+
+
 
   
   url = `http://professional.ie/api/getLandingPageTextForKeywords.php?keywords[]=${distinctMicrositeKeywordList.join("&keywords[]=")}`;
