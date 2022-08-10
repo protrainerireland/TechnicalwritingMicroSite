@@ -36,6 +36,26 @@ module.exports = function(config) {
     config.addFilter("join", function(arr, joinChar=" ") {
         return arr.join(joinChar);
     });
+
+    config.addFilter("formatScheduleInstance", function(instance, formatType="table") {
+        switch(formatType) {
+            case "table":
+                return `<tr>
+                    <td>${instance.name}</td>
+                    <td>${instance.date}</td>
+                    <td>${instance.location}</td>
+                    <td>
+                        <a class="btn btn-primary" href="https://www.professional.ie/course_schedule/something.html?id=${instance.id}">Book</a>
+                    </td>
+                    </tr>`;
+                break;
+            case "metadata":
+            case "default":
+                return `<script type="json+ld"></script>`;
+                break;
+
+        }
+    })
     
     config.addPassthroughCopy({"./src/img/*.*": "img"});
     

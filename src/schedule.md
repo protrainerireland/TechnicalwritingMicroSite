@@ -1,7 +1,7 @@
 ---
 layout: general_layout
 title: Schedule
-tags: [main]
+tags: []
 page:
     type: schedule
 ---
@@ -12,7 +12,7 @@ page:
 <table class="table">
 <thead>
     <tr>
-       <th>Name</th><th>Description</th>
+       <th>Name</th><th>Description</th><th>Location</th>
     </tr> 
 </thead>
 <tbody>
@@ -20,8 +20,9 @@ page:
 
 {% for instance in coursesapifull.schedule %}
 <tr>
-<td><a href="/courses/{{ course.name | slug }}/">{{ instance.name }}</a></td>
-<td>&nbsp;</td>
+<td><a href="/courses/{{ instance.name | slug }}/">{{ instance.name }}</a></td>
+<td>{{ instance.date }}</td>
+<td>{{ instance.location}}</td>
 </tr>
 {% endfor %}
 
