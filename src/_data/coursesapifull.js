@@ -95,10 +95,9 @@ module.exports = async function() {
 
 
   return {
-    courses: distinctCourseListWithSchedule, 
+    courses: distinctCourseList, 
     micrositeKeywords: json, 
     msKeywordData, 
-    savedSearches, 
-    schedule
+    savedSearches
   };
 };
