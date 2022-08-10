@@ -61,17 +61,34 @@ module.exports = async function() {
     type: "json"
   });
 
+
   let msKeywordData = json.map(keyword=> {
-    return {
+   
+    //console.log(keyword);
+      return {
       keyword: keyword.keyword, 
       paragraphs: keyword.paragraphs, 
       courses: distinctCourseList.filter(course=>course.searchWords.includes(keyword.keyword))
     }
+
+ 
   });
 
+  
+  // change the order of the keywords to put the primary keyword first
+  let index = msKeywordData.findIndex(keyword => keyword.keyword == site.searchKeywords[0]);
+
+  // bugfix, if keyword not found don't do anything 
+  if (index != -1) {
+
+    let primaryKeyword = msKeywordData[index];
+    msKeywordData.splice(index, 1);
+    msKeywordData.unshift(primaryKeyword);
+  }
 
     //let savedSearches = site.searchLocations.flatMap(location=> msKeywordData.map(keyword => {
-    let savedSearches = msKeywordData.flatMap(keyword=> {
+    let savedSearches = msKeywordData    
+        .flatMap(keyword=> {
       return site.searchLocations.map(location => {
 
         return {
@@ -85,15 +102,6 @@ module.exports = async function() {
     
   });
 
-  /*
-  console.log(savedSearches.flatMap(entry => {
-    console.log(entry);
-    return {
-      location: entry.location, 
-      ...entry.msKeywordData
-    }
-  }));
-  */
 
   return {
     courses: distinctCourseList, 
@@ -101,19 +109,4 @@ module.exports = async function() {
     msKeywordData, 
     savedSearches
   };
-
-  // GitHub API: https://developer.github.com/v3/repos/#get
-  /*
-  return fetch(`https://professional.ie/api/getCoursesFull.php?keywords=JavaScript`)
-    .then(res => res.json()) // node-fetch option to transform to json
-    .then(json => {
-
-      console.log(json.courses.length);
-
-      // prune the data to return only what we want
-      return {
-        courses: json.courses
-      };
-    });
-  */
 };
