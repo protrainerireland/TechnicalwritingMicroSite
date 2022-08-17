@@ -1,7 +1,7 @@
 ---
 layout: general_layout
 title: Schedule
-tags: []
+tags: [main]
 page:
     type: schedule
 ---
