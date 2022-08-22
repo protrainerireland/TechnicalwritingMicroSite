@@ -37,6 +37,12 @@ module.exports = function(config) {
         return arr.join(joinChar);
     });
 
+    // this filter will strip out newline characters and quotation marks from json text
+    // used to format the description for the ld+json metadata
+    config.addFilter("jsonsafe", function(description){
+
+        return description.replaceAll(/[\r\n]/gm, "");
+    });
     config.addFilter("formatScheduleInstance", function(instance, formatType="table") {
         switch(formatType) {
             case "table":

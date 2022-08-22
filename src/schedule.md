@@ -1,10 +1,11 @@
 ---
-layout: general_layout
+layout: schedule_layout
 title: Schedule
 tags: []
 page:
     type: schedule
 ---
+
 
 <hr class="my-2">
 <h1>{{ site.searchKeywords | join }} Course Schedule</h1>
@@ -17,13 +18,24 @@ page:
 </thead>
 <tbody>
 </tbody>
+</tbody>
+</table>
 
-{% for instance in coursesapifull.schedule %}
-<tr>
-<td><a href="/courses/{{ instance.name | slug }}/">{{ instance.name }}</a></td>
-<td>{{ instance.date }}</td>
-<td>{{ instance.location}}</td>
-</tr>
+
+
+
+
+{% for course in coursesapifull.courses %}
+<div>
+<h2>{{ course.name }}</h2>
+<a href="/courses/{{ course.name | slug }}/">Course Details</a>
+
+{% for instance in course.schedule %}
+{{ instance.date }} - 
+{{ instance.location }}
 {% endfor %}
 
-</table>
+{% endfor %}
+  
+
+</div>
