@@ -8,13 +8,6 @@ layout: general_layout
   <h2>Course Description</h2>
   <p>{{ course.descrip }}</p>
   <hr class="my-2">
-
-  
-  <!-- debugging tip - pipe an object through the json filter to see what it is
-  
-  hello
-  {{ course | json}} -->
-
   
   <div class="ui course-paragraphs">
   {% for paragraph in course.paragraphs %}
@@ -36,7 +29,7 @@ layout: general_layout
     </thead>
     <tbody>
 {% for instance in course.schedule %}
-    {{ instance | formatScheduleInstance | safe }}
+    {{ instance | formatScheduleInstance("table", course) | safe }}
 {% endfor %}
     </tbody>
 </table>
@@ -49,3 +42,5 @@ layout: general_layout
 {% endfor %}
 <hr class="my-2">
 </div>
+
+{% include "StructuredData/instances.njk" %}

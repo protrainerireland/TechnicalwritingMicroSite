@@ -115,7 +115,6 @@ module.exports = async function() {
     
   });
 
-
   return {
     courses: distinctCourseListWithSchedule, 
     micrositeKeywords: json, 

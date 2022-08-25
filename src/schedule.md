@@ -1,7 +1,7 @@
 ---
 layout: schedule_layout
 title: Schedule
-tags: []
+tags: [ ]
 page:
     type: schedule
 ---
