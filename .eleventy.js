@@ -31,7 +31,6 @@ function getInstanceDateInfo(strDate, duration) {
 function getLocationInfo(instance, course) {
 
     let location = {
-        "@context" : "http://schema.org",
     };
 
     let filename = slugify(course.name);
@@ -114,14 +113,12 @@ module.exports = function(config) {
             case "metadata":
                 let metadata = {
                     "@type": "EducationEvent", 
-                    "@context" : "http://schema.org",
                     name: "course.name", 
                     description: `${makeSafeForJson(course.descrip)}`, 
                     id: instance.id , 
                     ...getInstanceDateInfo(instance.date, course.durationDays), 
                     offers: {
                         "@type": "Offer", 
-                        "@context" : "http://schema.org",
                         "url":`https://professional.ie/course_schedule/${filename}.html?id=${instance.id}`, 
                         "priceCurrency": "EUR", 
                         "price": `${course.cost}`
