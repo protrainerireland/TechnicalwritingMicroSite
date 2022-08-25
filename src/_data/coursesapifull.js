@@ -42,9 +42,7 @@ module.exports = async function() {
 
 
 
-  console.log(distinctMicrositeKeywordList);
 
-  
   let schedule = json.flatMap(keyword => keyword.schedule).filter(instance => instance.course_id != null);
 
   schedule = schedule.map(instance => {

@@ -30,7 +30,9 @@ function getInstanceDateInfo(strDate, duration) {
 
 function getLocationInfo(instance, course) {
 
-    let location = {};
+    let location = {
+        "@context" : "http://schema.org",
+    };
 
     let filename = slugify(course.name);
 
@@ -39,7 +41,7 @@ function getLocationInfo(instance, course) {
         location.url = `https://professional.ie/course_schedule/${filename}.html?id=${instance.id}`;
     } else {
 
-    
+        
         location["@type"] = 'Place';
         location.sameAs = "https://professional.ie";
         location.name = `Professional Training ${instance.location}`
@@ -96,7 +98,7 @@ module.exports = function(config) {
 
     config.addFilter("formatScheduleInstance", function(instance, formatType="metadata",course=null ) {
 
-        console.log(course.durationDays);
+        let filename = slugify(course.name);
         
        switch(formatType) {
             case "table":
@@ -112,13 +114,15 @@ module.exports = function(config) {
             case "metadata":
                 let metadata = {
                     "@type": "EducationEvent", 
+                    "@context" : "http://schema.org",
                     name: "course.name", 
                     description: `${makeSafeForJson(course.descrip)}`, 
                     id: instance.id , 
                     ...getInstanceDateInfo(instance.date, course.durationDays), 
                     offers: {
                         "@type": "Offer", 
-                        "url":``, 
+                        "@context" : "http://schema.org",
+                        "url":`https://professional.ie/course_schedule/${filename}.html?id=${instance.id}`, 
                         "priceCurrency": "EUR", 
                         "price": `${course.cost}`
                     }, 
