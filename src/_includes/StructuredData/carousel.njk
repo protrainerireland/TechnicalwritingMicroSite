@@ -9,7 +9,7 @@
                 "position": {{ loop.index }}, 
                 "item": {
                     "@type": "Course", 
-                    "url": "", 
+                    "url": "{{ site.url }}/courses/{{ course.name | slug }}/", 
                     "name": "{{ course.name }}", 
                     "description":"{{ course.descrip | jsonsafe }}", 
                     "provider":{
