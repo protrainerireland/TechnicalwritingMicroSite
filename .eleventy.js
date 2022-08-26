@@ -1,4 +1,5 @@
 let branding = require('./src/_data/branding.json');
+let site = require('./src/_data/site.json');
 let fs = require('fs');
 let { makeSection, slugify, asAccordion } = require('./src/_includes/makeSection');
 
@@ -24,13 +25,14 @@ function getInstanceDateInfo(strDate, duration) {
     return {
         startDate:`${startDate.toISOString()}`, 
         endDate:`${endDate.toISOString()}`, 
-        duration:`${duration}D`
+        duration:`P${duration}D`
     }
 }
 
 function getLocationInfo(instance, course) {
 
     let location = {
+        
     };
 
     let filename = slugify(course.name);
@@ -38,18 +40,33 @@ function getLocationInfo(instance, course) {
     if (instance.location == 'Online') {
         location["@type"] = "VirtualLocation";
         location.url = `https://professional.ie/course_schedule/${filename}.html?id=${instance.id}`;
+        
     } else {
 
         
         location["@type"] = 'Place';
         location.sameAs = "https://professional.ie";
-        location.name = `Professional Training ${instance.location}`
+        location.name = `Professional Training ${instance.location}`;
 
+        if (instance.location == "Dublin") {
+            location.address = {
+                "@type" : "PostalAddress",
+                "streetAddress" : "Unit 22, Westland Square, Pearse Street",
+                "addressRegion" : "Dublin 2",
+                "postalCode" : "D02 W102"
+            }
+        } else {
+            location.address = {
+                "@type": "PostalAddress", 
+                "streetAddress" : "Unit E, Building 6500, Cork Airport Business Park", 
+                "addressRegion" : "Cork", 
+                "postalCode": "T12 TP8H"
+            }
+        }
     }
-
     return {location};
-
 }
+
 module.exports = function(config) {
 
     /* config.addFilter("makeSection", function(content) {
@@ -112,18 +129,28 @@ module.exports = function(config) {
                 break;
             case "metadata":
                 let metadata = {
+                    "@context":"http://schema.org", 
                     "@type": "EducationEvent", 
-                    name: "course.name", 
+                    name: `${ course.name }`, 
+                    image: `${site.url}${site.logo}`, 
                     description: `${makeSafeForJson(course.descrip)}`, 
-                    id: instance.id , 
                     ...getInstanceDateInfo(instance.date, course.durationDays), 
+                    eventStatus: "https://schema.org/EventScheduled", 
+                    eventAttendanceMode: `https://schema.org/${instance.location == 'Online' ? "OnlineEventAttendanceMode" : "OfflineEventAttendanceMode"}`,
                     offers: {
                         "@type": "Offer", 
                         "url":`https://professional.ie/course_schedule/${filename}.html?id=${instance.id}`, 
                         "priceCurrency": "EUR", 
-                        "price": `${course.cost}`
+                        "price": `${course.cost}`, 
+                        "availability": "https://schema.org/InStock",
+                        "validFrom": `${new Date().getFullYear()}-01-01T12:00`
                     }, 
-                    ...getLocationInfo(instance, course)
+                    ...getLocationInfo(instance, course), 
+                    "organizer": {
+                        "@type": "Organization", 
+                        "name": "Professional Training", 
+                        "url": "www.professional.ie"
+                    }
                     
                 }
                 return JSON.stringify(metadata);
