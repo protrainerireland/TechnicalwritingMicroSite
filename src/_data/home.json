@@ -46,8 +46,9 @@
             "text": "What to Expect", 
             "title": "What to Expect", 
             "type": "summary",
-            "image": "", 
+            "image": "img/coding.jpg", 
             "imagePosition": "right",
+            "imageWidth": 300, 
             "content":{
                 "title": "What to expect from one of our Facilitation Skills courses?",
                 "text":[
