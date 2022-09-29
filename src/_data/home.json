@@ -46,6 +46,7 @@
             "type": "keywordtext",
             "image": "", 
             "imagePosition": "right",
+            "imageWidth": 300, 
             "content":{
                 "title": "Why attend one of our Technical Writing courses?",
                 "text":[

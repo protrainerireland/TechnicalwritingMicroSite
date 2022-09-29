@@ -3,9 +3,10 @@
     "searchLocations": ["Dublin", "Cork", "Limerick", "Ireland"],
     "homepageTitle": "Training Courses - Dublin Cork Limerick Ireland", 
     "organisation": {
-        "name": "TechnicalWritingTraining.ie" 
+        "name": "Professional Training Solutions Ltd" ,
+        "department": "TechnicalWritingTraining.ie" 
     },
-    "url": "technicalwritingtraining.ie",
+    "url": "https://www.technicalwritingtraining.ie",
     "logo": "",
     "address": {
         "line1": "Building 6500E", 
