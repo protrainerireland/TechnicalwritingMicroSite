@@ -1,11 +1,12 @@
 {
-    "searchKeywords": ["Java", "Spring"],
+    "searchKeywords": ["Angular"],
     "searchLocations": ["Dublin", "Cork", "Limerick", "Ireland"],
     "homepageTitle": "Training Courses - Dublin Cork Limerick Ireland", 
     "organisation": {
-        "name": "AngularTraining.ie" 
+        "name": "Professional Training Solutions Ltd" , 
+        "department": "Angular Training"
     },
-    "url": "angulartraining.ie",
+    "url": "https://www.angulartraining.ie",
     "logo": "",
     "description": "This  course is a focused, hands-on programme aimed at ensuring participants efficiently gain the skills they need to be more effective in their day to day roles.",
     "address": {

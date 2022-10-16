@@ -10,7 +10,7 @@
             "id": "banner", 
             "link": "no", 
             "type": "banner", 
-            "title": "Report Writing Training Courses Ireland", 
+            "title": "Excel Training Courses Ireland", 
             "subtitle": "Contact us for all your Report Writing training requirements", 
             "background": "img/ground@-min.png",
             "image": "svg/onlineclass.svg"
@@ -46,8 +46,9 @@
             "text": "What to Expect", 
             "title": "What to Expect", 
             "type": "summary",
-            "image": "", 
+            "image": "img/coding.jpg", 
             "imagePosition": "right",
+            "imageWidth": 300, 
             "content":{
                 "title": "What to expect from one of our Facilitation Skills courses?",
                 "text":[
