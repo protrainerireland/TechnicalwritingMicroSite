@@ -112,22 +112,10 @@ module.exports = function(config) {
         return `${item}-${a}-${b}-like`;
     });
 
-
-
-    config.addFilter("formatScheduleInstanceTest", function(instance, formatType="metadata",courseItem=null) {
-
-        console.log(`***formatScheduleInstanceTest : ${formatType},${courseItem ? "ok" : "course missing"}`);
-
-        return JSON.stringify(instance);
-    });
-
     config.addFilter("formatScheduleInstance", function(instance, formatType="metadata",courseItem=null) {
-
-        console.log(`***formatScheduleInstance : ${formatType},${courseItem ? "ok" : "course missing"}`);
   
         let filename = slugify(courseItem.name);
-
-        
+      
        switch(formatType) {
             case "table":
                 return `<tr>
