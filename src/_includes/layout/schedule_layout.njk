@@ -13,29 +13,32 @@ layout: base_layout
 
 
             {% for courseItem in coursesapifull.courses %}
-            <div>
-            <h2>{{ courseItem.name }}</h2>
-            <a href="/courses/{{ courseItem.name | slug }}/">Course Details</a>
+                {% if courseItem.schedule.length > 0 %}
+                    <div>
+                    <h2>{{ courseItem.name }}</h2>
+                    <a href="/courses/{{ courseItem.name | slug }}/">Course Details</a>
 
 
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Name</th><th>Date</th><th>Location</th><th>&nbsp;</th>
-                    </tr>
-                </thead>
-                <tbody>
-            {% for instance in courseItem.schedule %}
-            {{ instance | formatScheduleInstance("table", courseItem) | safe }}
-            {% endfor %}
-                </tbody>
-            </table>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th><th>Date</th><th>Location</th><th>&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                    {% for instance in courseItem.schedule %}
+                    {{ instance | formatScheduleInstance("table", courseItem) | safe }}
+                    {% endfor %}
+                        </tbody>
+                    </table>
+                    </div>
+                {% endif %}
 
             {% endfor %}
 
 
             
 
-            </div>
+            
     </div>
 </section>
