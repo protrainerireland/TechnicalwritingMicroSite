@@ -1,10 +1,10 @@
 {
-    "searchKeywords": ["Excel"],
+    "searchKeywords": ["Azure"],
     "searchLocations": ["Dublin", "Cork", "Limerick", "Ireland"],
     "homepageTitle": "Training Courses - Dublin Cork Limerick Ireland", 
     "organisation": {
         "name": "Professional Training Solutions Ltd" , 
-        "department": "Angular Training"
+        "department": "Azure Training"
     },
     "url": "https://www.angulartraining.ie",
     "logo": "",

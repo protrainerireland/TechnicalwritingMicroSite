@@ -146,7 +146,7 @@ module.exports = {
 
                 } catch(error) {
                     text = `<ul></ul>`;
-                    console.log(`***** metadata error section.content.list is missing - keywordtext *****`);  
+                    console.log(`***** metadata error section.content.text is missing - keywordtext *****`);  
 
                 }
 
