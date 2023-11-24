@@ -3,7 +3,7 @@ layout: general_layout
 title: Courses
 tags: [main]
 page:
-    type: course
+    type: home
 ---
 
 
