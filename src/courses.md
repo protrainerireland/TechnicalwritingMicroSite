@@ -1,6 +1,7 @@
 ---
 layout: general_layout
 title: Courses
+description: Training Courses
 tags: [main]
 page:
     type: home
