@@ -9,7 +9,7 @@ page:
 
 
 <hr class="my-2">
-<h1>{% for keyword in site.searchKeywords %} {{ keyword }} {% endfor %} Courses</h1>
+<h1>{% for keyword in site.searchKeywords %} {{ keyword }} {% endfor %} Training Courses</h1>
 
 <table class="table">
 <thead>
