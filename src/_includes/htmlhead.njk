@@ -10,6 +10,8 @@
     <title>{{ search.title }}</title>
     {% elif page.type == "course" %}
     <title>{{ course.name }} Training</title>
+    {% elif page.type == "keyword" %}
+    <title>{{ keyword }} Training Courses, Dublin, Cork, Limerick, Ireland</title>
     {% elif page.type == "schedule" %}
     <title>Scheduled {{site.searchKeywords.join(" ")}} {{ site.homepageTitle }}</title>
     {% elif page.title == null or page.title == "" %}

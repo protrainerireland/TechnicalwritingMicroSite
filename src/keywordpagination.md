@@ -6,7 +6,7 @@ pagination:
     alias: keyword
 permalink: "training_courses/{{ keyword | slug | removeInvalidChars }}/"
 page:
-    type: other
+    type: keyword
     title: Training Courses
 ---
 # {{ keyword }} Training Courses
