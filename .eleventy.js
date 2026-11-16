@@ -1,7 +1,8 @@
 let branding = require('./src/_data/branding.json');
 let site = require('./src/_data/site.json');
 let fs = require('fs');
-let { makeSection, slugify, asAccordion, keywordInfo } = require('./src/_includes/makeSection');
+let slugifyPackage = require('slugify'); // pinned to 1.5.3, see the "slug" filter
+let { makeSection, hasQuotes, slugify, removeInvalidChars, asAccordion, keywordInfo } = require('./src/_includes/makeSection');
 
 // this function makes a string safe for json
 // it removes the newline characters
@@ -10,59 +11,106 @@ function makeSafeForJson(item) {
     return item.replaceAll(/[\r\n]/gm, "");
 }
 
-// this function formats date strings in ISO Date format
+// "2026-10-12" -> "Mon 12 Oct 2026"
+function displayDate(strDate) {
+    if (!strDate) return "";
+    let [year, month, day] = String(strDate).split("-").map(Number);
+    let date = new Date(Date.UTC(year, month - 1, day));
+    if (isNaN(date)) return strDate;
+    return date.toLocaleDateString("en-IE", { weekday: "short", day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
+}
 
+// course outline text arrives as newline-separated topics; show those as a list
+function courseText(text) {
+    let lines = String(text || "").split(/\r?\n/).map(line => line.trim()).filter(Boolean);
+    if (lines.length <= 1) return `<p>${lines.join("")}</p>`;
+    return `<ul>${lines.map(line => `<li>${line}</li>`).join("")}</ul>`;
+}
+
+// course length in days from the API's durationDays, e.g. 0.5, 1, 3 ("" or 0 when not set)
+function durationInDays(duration) {
+    let days = parseFloat(duration);
+    return days > 0 ? days : 0;
+}
+
+// how a course length reads on the site: "Half day", "1 day", "1.5 days", "3 days".
+// Returns "" when the course has no length set, so templates can leave it out.
+function formatDuration(duration) {
+    let days = durationInDays(duration);
+    if (!days) return "";
+    if (days < 0.5) return "Under half a day";
+    if (days == 0.5) return "Half day";
+    return `${days} ${days == 1 ? "day" : "days"}`;
+}
+
+// first scheduled date that hasn't passed yet ("" if none), as of the build
+function nextDate(schedule) {
+    let today = new Date().toISOString().slice(0, 10);
+    let next = (schedule || []).find(instance => instance.date > today);
+    return next ? next.date : "";
+}
+
+// start, end and length of one scheduled date, for structured data.
+// A day runs 10:30 to 17:00; a course of n days ends on its nth day, and a
+// course shorter than a day ends partway through its first day.
 function getInstanceDateInfo(strDate, duration) {
 
+    let days = durationInDays(duration);
     let startDate = new Date(strDate);
-    startDate.setHours(10);
-    startDate.setMinutes(30);
-    let endDate = new Date(strDate);
-    endDate.setDate(endDate.getDate() + parseInt(duration));
-    endDate.setHours(17);
-    endDate.setMinutes(0);
+    startDate.setHours(10, 30, 0, 0);
 
-    return {
-        startDate:`${startDate.toISOString()}`, 
-        endDate:`${endDate.toISOString()}`, 
-        duration:`P${duration}D`
+    let endDate = new Date(strDate);
+    if (days > 0 && days < 1) {
+        endDate = new Date(startDate.getTime() + days * 6.5 * 60 * 60 * 1000);
+    } else {
+        endDate.setDate(endDate.getDate() + Math.max(Math.ceil(days), 1) - 1);
+        endDate.setHours(17, 0, 0, 0);
     }
+
+    let info = {
+        startDate: startDate.toISOString(),
+        endDate: endDate.toISOString()
+    };
+    if (days) info.duration = `P${days}D`;
+    return info;
+}
+
+// the offices, with their addresses from site.json
+const offices = {
+    Cork: { address: site.address, phone: site.phone },
+    Dublin: { address: site.addressDublin, phone: site.phoneDublin },
+    Limerick: { address: site.addressLimerick, phone: site.phoneLimerick }
+};
+
+// schema.org PostalAddress for one of the offices above
+function postalAddress(city) {
+    let address = offices[city].address;
+    return {
+        "@type": "PostalAddress",
+        streetAddress: [address.line1, address.line2, address.town].filter(Boolean).join(", "),
+        addressLocality: city,
+        addressRegion: address.county,
+        postalCode: address.postcode,
+        addressCountry: "IE"
+    };
 }
 
 function getLocationInfo(instance, course) {
 
-    let location = {
-        
-    };
+    let location = {};
 
     let filename = slugify(course.name);
 
     if (instance.location == 'Online') {
         location["@type"] = "VirtualLocation";
         location.url = `https://professional.ie/course_schedule/${filename}.html?id=${instance.id}`;
-        
     } else {
-
-        
+        // classes outside our offices fall back to Cork, as before
+        let city = offices[instance.location] ? instance.location : "Cork";
         location["@type"] = 'Place';
         location.sameAs = "https://professional.ie";
-        location.name = `Professional Training ${instance.location}`;
-
-        if (instance.location == "Dublin") {
-            location.address = {
-                "@type" : "PostalAddress",
-                "streetAddress" : "Unit 22, Westland Square, Pearse Street",
-                "addressRegion" : "Dublin 2",
-                "postalCode" : "D02 W102"
-            }
-        } else {
-            location.address = {
-                "@type": "PostalAddress", 
-                "streetAddress" : "Unit E, Building 6500, Cork Airport Business Park", 
-                "addressRegion" : "Cork", 
-                "postalCode": "T12 TP8H"
-            }
-        }
+        location.name = `Professional Training ${city}`;
+        location.address = postalAddress(city);
     }
     return {location};
 }
@@ -85,12 +133,57 @@ module.exports = function(config) {
     })
 
     // this filter is to fix the problem with the Azure and other MS courses where there is a : in the name
-    config.addFilter("removeInvalidChars", function(filename) {
-        //console.log(filename);
-        return filename.replace(/:/ig, "-");
-    });
+    config.addFilter("removeInvalidChars", removeInvalidChars);
 
     config.addFilter("slugify", slugify);
+
+    // Eleventy 0.12's slug filter, kept so page URLs don't change: newer slugify
+    // versions turn "Situations – Call" into "situations-call" instead of "situations---call"
+    config.addFilter("slug", str => slugifyPackage(str, { replacement: "-", lower: true }));
+
+    // the /training_courses/ path for a keyword, worked out the same way as keywordpagination.md's permalink
+    let keywordPagePath = word => removeInvalidChars(slugifyPackage(word.trim().replace(/#/g, " sharp").replace(/\+/g, " plus"), { replacement: "-", lower: true }));
+    config.addFilter("keywordPagePath", keywordPagePath);
+
+    // course search words that aren't microsite keywords have no keyword page, so don't link them
+    config.addFilter("hasKeywordPage", (word, keywords) => (keywords || []).some(keyword => keywordPagePath(keyword) == keywordPagePath(word)));
+
+    config.addFilter("displayDate", displayDate);
+
+    // shorten text to at most `length` characters, cutting at a word boundary and adding "..."
+    config.addFilter("shorten", (text, length = 220) => {
+        text = String(text || "").trim();
+        if (text.length <= length) return text;
+        let cut = text.slice(0, length - 3);
+        let space = cut.lastIndexOf(" ");
+        if (space > 0) cut = cut.slice(0, space);
+        return cut.replace(/[\s,;:.\-–(]+$/, "") + "...";
+    });
+
+    // one office address from site.json on a single line, skipping any blank lines,
+    // e.g. "26 Upper Pembroke Street, Dublin 2 D02 X361"
+    config.addFilter("formatAddress", function(address) {
+        return [address.line1, address.line2, address.town, address.county, address.postcode].map(part => (part || "").trim()).filter(Boolean).join(", ");
+    });
+
+    // all office addresses as JSON, for structured data
+    config.addShortcode("officeAddresses", () =>JSON.stringify(Object.keys(offices).map(postalAddress)));
+    config.addFilter("courseText", courseText);
+
+    // first scheduled date that hasn't passed yet ("" if none), as of the build
+    config.addFilter("nextDate", nextDate);
+
+    config.addFilter("formatDuration", formatDuration);
+
+    // the line under each course in course lists, e.g. "Half day, next date Fri 13 Nov 2026"
+    config.addFilter("courseMeta", function(course) {
+        let duration = formatDuration(course.durationDays);
+        let next = nextDate(course.schedule);
+        let nextText = next ? `next date ${displayDate(next)}` : "";
+        if (duration && nextText) return `${duration}, ${nextText}`;
+        return duration || (nextText ? "N" + nextText.slice(1) : "");
+    });
+    config.addShortcode("year", () => `${new Date().getFullYear()}`);
     
     config.addFilter("asAccordion", asAccordion);
 
@@ -121,27 +214,21 @@ module.exports = function(config) {
       
        switch(formatType) {
             case "table":
+                // js/site.js swaps the Book link for "Completed" once the date has passed
                 return `<tr>
-                    <td>${instance.name}</td>
-                    <td>${instance.date}</td>
+                    <td><time datetime="${instance.date}">${displayDate(instance.date)}</time></td>
                     <td>${instance.location}</td>
-                    <td>
-                        <script>
-                        {
-                        
-                            displayIfDateInFuture("${instance.date}", '<a class="btn btn-primary" href="https://www.professional.ie/course_schedule/${filename}.html?id=${instance.id}">Book</a>','<span>Completed</span>');
-
-                        }
-                        </script>
+                    <td class="data-table__action">
+                        <a class="button button--small" data-course-date="${instance.date}" href="https://www.professional.ie/course_schedule/${filename}.html?id=${instance.id}">Book<span class="visually-hidden"> ${instance.name}, ${displayDate(instance.date)}, ${instance.location}</span></a>
                     </td>
                     </tr>`;
                 break;
             case "metadata":
                 let metadata = {
-                    "@context":"http://schema.org", 
+                    "@context":"https://schema.org",
                     "@type": "EducationEvent", 
                     name: `${ courseItem.name }`, 
-                    image: `${site.url}${site.logo}`, 
+                    image: site.logo, 
                     description: `${makeSafeForJson(courseItem.descrip)}`, 
                     ...getInstanceDateInfo(instance.date, courseItem.durationDays), 
                     eventStatus: "https://schema.org/EventScheduled", 
@@ -158,7 +245,7 @@ module.exports = function(config) {
                     "organizer": {
                         "@type": "Organization", 
                         "name": "Professional Training", 
-                        "url": "www.professional.ie"
+                        "url": "https://www.professional.ie/"
                     }
                     
                 }
@@ -182,16 +269,19 @@ module.exports = function(config) {
 
     config.addFilter("makeSection", makeSection);
 
+    // menu items: leave out sections that have link "no", and the testimonials link when there are no quotes
+    config.addFilter("inMenu", section => section.link != "no" && (section.type != "quotes" || hasQuotes(section)));
+
     config.addFilter("convertLineBreaks", function(text) {
-        return text.replace(/\r\n/g, "<br>");
+        return text.replace(/\r?\n/g, "<br>");
     })
 
+    // template formats are set above with setTemplateFormats
     return {
-        templateFormats: ["html", "njk", "svg"], 
         dir: {
-            input: './src', 
-            output: './build', 
-            layouts: '/_includes/layout'
+            input: 'src',
+            output: 'build',
+            layouts: '_includes/layout'
         }
     };
 };

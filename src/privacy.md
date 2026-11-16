@@ -1,6 +1,7 @@
 ---
 layout: general_layout
+title: Privacy Policy
 ---
 # Privacy Policy
-we won't do anything with your info
-we don't use any cookies
+We won't do anything with your information on this website.
+We do not use cookies.

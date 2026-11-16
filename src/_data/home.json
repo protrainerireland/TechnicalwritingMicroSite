@@ -1,59 +1,60 @@
 {
-    "sections":[
+    "sections": [
         {
             "id": "top",
-            "link": "/#top", 
-            "text": "Home",  
+            "link": "/",
+            "text": "Home",
             "type": "placeholder"
-        }, 
-        {
-            "id": "banner", 
-            "link": "no", 
-            "type": "banner", 
-            "title": "Technical Writing Training Courses Ireland", 
-            "subtitle": "Contact us for all your Technical Writing training requirements", 
-            "background": "img/ground@-min.png",
-            "image": "svg/writing.svg"
         },
         {
-            "id": "keywordtext",
-            "link": "/#keywordtext", 
-            "text": "Welcome", 
-            "title": "Welcome", 
-            "type": "keywordtext",
-            "image": "/svg/Code Version Control.svg", 
-            "imagePosition": "right",
-            "content":{
-                "title": "Writing concisely and clearly takes time...",
-                "text":[
-                    "Writing concisely and clearly takes time. You have to work out exactly what your audience wants to know in order to make sure you are writing relevant information.  There is no set formula for writing a report – every report is different. Each one depends on what the purpose is, who you are writing for and the kind of information that you are reporting.",
-                    "The keys to writing good reports are:"  
-                ],
-                "list":[
-                    "Lock in the specific reports/tasks that constitute the focus of the training.", 
-                    "Fine-tune the emphasis and incorporate client specific terminology into Professional Training's proprietary materials for the skills development segment of the workshop .", 
-                    "Define skills building exercises and briefings which replicate situations that are realistic, relevant and useful to client and the participants at the workshop.", 
-                    "Agree evaluation methods for the workshop."   
-                ], 
-                "image": "svg/Design collaboration.svg"
+            "id": "banner",
+            "link": "no",
+            "type": "banner",
+            "title": "Technical Writing Training Courses Ireland",
+            "subtitle": "Practical, instructor-led training in-person at our Dublin, Cork and Limerick offices, at your premises nationwide or live online. Learn to plan, write and edit clear manuals, procedures and reports that readers can follow and act on.",
+            "illustration": {
+                "src": "/img/undraw-reviewed-docs.svg?v=2",
+                "width": 800,
+                "height": 661
             }
         },
         {
-            "id": "summary",
-            "link": "/#summary", 
-            "text": "Why Attend?", 
-            "title": "Why Attend?", 
-            "type": "keywordtext",
-            "image": "", 
-            "imagePosition": "right",
-            "imageWidth": 300, 
-            "content":{
-                "title": "Why attend one of our Technical Writing courses?",
-                "text":[
-                    "We work best with participants who are committed to delivering reports, manuals and routine communications that address the needs of the situation and their target audience effectively and efficiently. <a href=/courses>Our workshops</a> are highly participative and constantly seek to anchor the skills and knowledge in the participants work situation.",
-                    "People learn best by “doing” and the content will combine generic learning inputs with “smart practice” using predefined exercises and referencing documents and situations specific to the client organisation where possible."
-                ]
+            "id": "about",
+            "link": "/#about",
+            "text": "About",
+            "title": "About our technical writing courses",
+            "type": "text",
+            "content": [
+                "Clear writing takes time and practice. You need to know who your readers are, what they need and how they will use your document, whether it is a user guide, a standard operating procedure, an incident report or a routine email. Our courses give you a systematic way to plan, write and edit these documents so they are accurate, brief and easy to follow.",
+                "Our <a href=/courses/>workshops</a> are highly participative. People learn best by doing, so each course combines short briefings with practical exercises based on realistic documents and, where possible, on your own organisation's reports and terminology. Bring a sample of your own writing to get the most from the day."
+            ],
+            "illustration": {
+                "src": "/img/undraw-visual-explanation.svg?v=2",
+                "width": 800,
+                "height": 551
             }
-        } 
-    ] 
+        },
+        {
+            "id": "testimonials",
+            "link": "/#testimonials",
+            "type": "quotes",
+            "title": "What our attendees say",
+            "content": {
+                "quotes": []
+            },
+            "text": "Testimonials"
+        },
+        {
+            "id": "get-started",
+            "link": "no",
+            "type": "cta",
+            "title": "Find the right technical writing course for you",
+            "content": "From a one-day introduction to technical writing to advanced report writing for people who write reports as part of their job. See what each course covers, then book a date in Dublin, Cork or live online.",
+            "actions": [
+                { "text": "Browse courses", "link": "/courses/" },
+                { "text": "See course dates", "link": "/schedule/" }
+            ],
+            "note": "Training a team? We can run any course at your premises or online, on dates that suit you. <a href=\"#contact\">Contact us</a>"
+        }
+    ]
 }

@@ -6,9 +6,8 @@
         "name": "Professional Training Solutions Ltd" ,
         "department": "TechnicalWritingTraining.ie" 
     },
-    "url": "https://www.technicalwritingtraining.ie",
-    "logo": "",
-    "description": "This  course is a focused, hands-on programme aimed at ensuring participants efficiently gain the skills they need to be more effective in their day to day roles.",
+    "url": "www.technicalwritingtraining.ie",
+    "logo": "https://www.professional.ie/img/ProfessionalTrainingOffice.jpg",
     "address": {
         "line1": "Building 6500E", 
         "line2": "Cork Airport Business Park", 
@@ -18,12 +17,12 @@
         "postcode": "T12 TP8H"
     },
     "addressDublin": {
-        "line1": "Unit 22/23", 
-        "line2": "Westland", 
-        "town": "Pearse Street", 
+        "line1": "26 Upper Pembroke Street",
+        "line2": "",
+        "town": "",
         "county": "Dublin 2", 
         "country": "Ireland", 
-        "postcode": "D02 W102"
+        "postcode": "D02 X361"
     },
     "addressLimerick": {
         "line1": "Limerick Business Complex",
@@ -41,11 +40,7 @@
         "lat": 51.852587, 
         "lng": -8.484224, 
         "google": "https://www.google.com/maps/place/Professional+Training+Solutions+Ltd/@51.852587,-8.484224,10z/data=!4m5!3m4!1s0x0:0x3c971fc02b3a40f3!8m2!3d51.852587!4d-8.484224?hl=en"
-    }, 
-    "footertext":[
-        "We do javascript training and are very good at it", 
-        "Full range of javascript courses available"
-    ], 
+    },
     "designer": {
         "name": "professional.ie",
         "link": "https://professional.ie/consulting_ireland/web%20development%20consultancy%20ireland.htm"
