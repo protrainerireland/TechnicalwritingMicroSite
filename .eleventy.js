@@ -266,6 +266,7 @@ module.exports = function(config) {
     config.addPassthroughCopy({"./src/img/testimonials/*.*": "img/testimonials"});
     config.addPassthroughCopy({"./src/css/*.*": "css"});
     config.addPassthroughCopy({"./src/js/*.*": "js"});
+    config.addPassthroughCopy({"./src/robots.txt": "robots.txt"});
     
 
     config.setTemplateFormats("html,njk,md,svg");
